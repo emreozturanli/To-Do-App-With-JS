@@ -14,6 +14,14 @@ newInput.addEventListener('keydown', (e)=>{
     }
 })
 
+window.addEventListener('keydown', (e)=>{
+    if(e.code === 'Delete'){
+        deleteItems();
+    }
+})
+
+/* ADD NEW TO-DO */
+
 function addItem(){
     const toDo = newInput.value;
     
@@ -39,6 +47,8 @@ function addItem(){
     newInput.value= '';
 }
 
+/* REMOVE, CHECK */ 
+
 mainContainer.addEventListener('click',(e)=>{
     const btn = e.target;
     
@@ -50,9 +60,7 @@ mainContainer.addEventListener('click',(e)=>{
         else{
             alert('You have to ✔ first!!!')
         }
-        
     }
-
     else if(btn.innerHTML == '☛'){
         btn.classList.remove('show');
         btn.previousElementSibling.classList.add('show');
@@ -66,6 +74,8 @@ mainContainer.addEventListener('click',(e)=>{
     }
 })
 
+/* CLEAR LIST */
+
 clearBtn.addEventListener('click',()=>{
     if(confirm('Do you really want to clear your list?') ){
     mainContainer.innerHTML = '';
@@ -73,3 +83,18 @@ clearBtn.addEventListener('click',()=>{
     }
 })
 
+/* DELETE SELECTED ITEMS */
+
+function deleteItems(){
+    let checkedItems = document.querySelectorAll('.check-sign.show');
+    console.log(checkedItems);
+    if(checkedItems.length == 0){
+        alert('There arent any checked item');
+    }
+    else{
+        let deleteAll = confirm('Do you really want to DELETE all of the checked items?');
+        deleteAll &&  checkedItems.forEach((checked)=>{
+            mainContainer.removeChild(checked.parentElement)
+        })  
+    }
+}
