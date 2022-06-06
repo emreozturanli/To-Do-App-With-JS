@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Architects Daughter', cursive;
+}
+
+body{
+    background-color: #fc9b77;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* #f1f5f8 */
+.app{
+    background-color: #f1f5f8;
+    background-image: url("https://www.transparenttextures.com/patterns/climpek.png");
+    border-radius: .5rem;
+    box-shadow: 0 0 10px 10px #00000040;
+    width: 500px;
+    min-height: 600px;
+    text-align: center;
+    padding: 1rem;
+}
+
+header{
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1{
+    background-color: #F56B39;
+    width: max-content;
+    padding: .2rem 1rem;
+    transform: rotate(5deg);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 20px;
+}
+
+.newItem{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 2px dashed #F56B39;
+    font-size: 1.2rem;
+    margin-right: 2rem;
+    width: 60%;
+}
+
+.add{
+    padding: .3rem 1rem;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: rgb(198, 239, 115);
+    box-shadow: 4px 3px 7px 2px #00000040;
+    cursor: pointer;
+}
+main{
+    padding: 2rem 1rem 2rem 1rem;
+    text-align: left;
+    overflow: auto;
+    height: 400px;
+    border-bottom: 1px solid #808080;
+}
+
+.note-container{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: 1rem;
+    position: relative;
+
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1.5s;
+}
+
+
+.check-sign{
+    font-size: 2rem;
+    font-weight: bold;
+    color: green;
+    display: none;
+    cursor: pointer;
+}
+
+.hand-sign{
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(35, 150, 243);
+    cursor: pointer;
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.line{
+    opacity: .5;
+    text-decoration: line-through;
+}
+
+.note{
+    display: inline-block;
+    font-size: 1.2rem;
+    word-break: break-all;
+}
+
+.remove{
+    margin-right: .8rem;
+    margin-left: auto;
+    padding: .3rem .7rem;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(243, 126, 105);
+    box-shadow: 4px 3px 7px 2px #00000040;
+    color: #f1f5f8;
+    cursor: pointer;
+}
+
+.clear{
+    display: block;
+    margin:1rem auto 0;
+    padding: .3rem .7rem;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(240, 39, 3);
+    box-shadow: 4px 3px 7px 2px #00000040;
+    color: #f1f5f8;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+@media (max-width: 600px){
+    .app{
+        width: 350px;
+    }
+}
