@@ -13,3 +13,12 @@
 ✔ to use <b>confirm</b> property to interact with the user, <br>
 ✔ to use  <b>classList</b> property and its methods to add and remove some classes of elements. <br>
 
+## FUNCTIONALITY
+
+✔ user can add new to-dos by clicking <b>add</b> button, <br>
+✔ user can add new to-dos by pressing <b>ENTER</b> key, <br>
+✔ user can not  add new to-do if input is empty, <br>
+✔ user can remove to-dos by clicking <b>remove</b> button next to the item user want to remove, <br>
+✔ user can change the 👉 to ✔ clicking <b>👉</b> button, <br>
+✔ user can clear all list by clicking <b>clear</b> button, <br>
+✔ user can delete or remove checked items by pressing <b>DELETE</b> key. <br>
