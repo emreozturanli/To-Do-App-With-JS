@@ -6,6 +6,36 @@ const mainContainer = document.querySelector('main');
 const checkSign = document.querySelectorAll('.check-sign');
 const handSign = document.querySelectorAll('.hand-sign');
 
+/* LOCALSTORAGE */
+
+function initial(){
+    let todoItems = localStorage.getItem('todos');
+    console.log(todoItems)
+    // if localstorage is empty (means that user uses our app the first time)
+    !todoItems && localStorage.setItem("todos", JSON.stringify([]));
+    // we created an empty array and send it to the storage
+    todoItems && JSON.parse(todoItems).forEach((element)=> initialList(element))
+}
+
+initial()
+
+function initialList(element){
+    console.log(element.toDoText)
+    // element.toDoText
+    const container = document.createElement('div');
+    container.innerHTML= `
+    <span class="check-sign">&#10004;</span>
+    <span class="hand-sign show">&#9755;</span>
+    <p class="note">${element.toDoText}</p> 
+    <button class="remove">remove</button>`;
+    container.classList.add('note-container');
+    mainContainer.appendChild(container);
+
+    setTimeout(()=>{
+    container.style.maxHeight='500px';
+},200)
+}
+
 addBtn.addEventListener('click', addItem)
 
 newInput.addEventListener('keydown', (e)=>{
@@ -44,6 +74,19 @@ function addItem(){
         alert('You must type something!!!');
     }
 
+    // creating new todo object before sendin it to storage
+    let toDoItem = {
+        // id : Math.floor(Math.random()*1000 + 1),
+        toDoText : toDo,
+        // isDone: false,
+    };
+
+    let allToDos = JSON.parse(localStorage.getItem('todos'));
+    console.log(allToDos)
+    allToDos.push(toDoItem);
+    console.log(allToDos)
+    localStorage.setItem('todos',JSON.stringify(allToDos));
+
     newInput.value= '';
 }
 
@@ -56,6 +99,15 @@ mainContainer.addEventListener('click',(e)=>{
         console.log(btn.parentElement)
         if(btn.parentElement.firstElementChild.classList.contains('show')){
             mainContainer.removeChild(btn.parentElement)
+            
+            let allToDos = JSON.parse(localStorage.getItem('todos'));
+            console.log(allToDos)
+
+            let removedItem = allToDos.filter(item => item['toDoText'] == e.target.previousElementSibling.innerText)
+            console.log(removedItem)
+            
+            allToDos.splice(allToDos.indexOf(removedItem[0]),1)
+            localStorage.setItem('todos',JSON.stringify(allToDos));
         }
         else{
             alert('You have to ✔ first!!!')
@@ -80,6 +132,8 @@ clearBtn.addEventListener('click',()=>{
     if(confirm('Do you really want to clear your list?') ){
     mainContainer.innerHTML = '';
     newInput.value = '';
+
+    localStorage.setItem('todos', JSON.stringify([]));
     }
 })
 
