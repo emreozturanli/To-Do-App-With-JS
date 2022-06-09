@@ -10,18 +10,14 @@ const handSign = document.querySelectorAll('.hand-sign');
 
 function initial(){
     let todoItems = localStorage.getItem('todos');
-    console.log(todoItems)
     // if localstorage is empty (means that user uses our app the first time)
     !todoItems && localStorage.setItem("todos", JSON.stringify([]));
     // we created an empty array and send it to the storage
     todoItems && JSON.parse(todoItems).forEach((element)=> initialList(element))
 }
-
 initial()
 
 function initialList(element){
-    console.log(element.toDoText)
-    // element.toDoText
     const container = document.createElement('div');
     container.innerHTML= `
     <span class="check-sign">&#10004;</span>
@@ -82,9 +78,7 @@ function addItem(){
     };
 
     let allToDos = JSON.parse(localStorage.getItem('todos'));
-    console.log(allToDos)
     allToDos.push(toDoItem);
-    console.log(allToDos)
     localStorage.setItem('todos',JSON.stringify(allToDos));
 
     newInput.value= '';
@@ -96,15 +90,11 @@ mainContainer.addEventListener('click',(e)=>{
     const btn = e.target;
     
     if(btn.innerHTML == 'remove'){
-        console.log(btn.parentElement)
         if(btn.parentElement.firstElementChild.classList.contains('show')){
             mainContainer.removeChild(btn.parentElement)
             
             let allToDos = JSON.parse(localStorage.getItem('todos'));
-            console.log(allToDos)
-
             let removedItem = allToDos.filter(item => item['toDoText'] == e.target.previousElementSibling.innerText)
-            console.log(removedItem)
             
             allToDos.splice(allToDos.indexOf(removedItem[0]),1)
             localStorage.setItem('todos',JSON.stringify(allToDos));
@@ -141,7 +131,6 @@ clearBtn.addEventListener('click',()=>{
 
 function deleteItems(){
     let checkedItems = document.querySelectorAll('.check-sign.show');
-    console.log(checkedItems);
     if(checkedItems.length == 0){
         alert('There arent any checked item');
     }
