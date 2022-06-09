@@ -22,3 +22,5 @@
 ✔ user can change the 👉 to ✔ clicking <b>👉</b> button, <br>
 ✔ user can clear all list by clicking <b>clear</b> button, <br>
 ✔ user can delete or remove checked items by pressing <b>DELETE</b> key. <br>
+✔ all todos are storing in the <b>local storage</b> <br>
+✔ when user remove an item it is also removed from local storage <br>
